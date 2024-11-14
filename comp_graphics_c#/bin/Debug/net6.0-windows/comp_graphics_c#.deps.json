@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "comp_graphics_c#/1.0.0": {
+        "runtime": {
+          "comp_graphics_c#.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "comp_graphics_c#/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
