@@ -4,6 +4,11 @@ C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp
 C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\bin\Debug\net6.0-windows\comp_graphics_c#.dll
 C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\bin\Debug\net6.0-windows\comp_graphics_c#.pdb
 C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c_.Form1.resources
+C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c_.Form3dGraphics.resources
+C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c_.FormMenu.resources
+C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c_.FormPictureProcess.resources
+C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c_.Paint.resources
+C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c_.Properties.Resources.resources
 C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c#.csproj.GenerateResource.cache
 C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c#.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c#.AssemblyInfoInputs.cache
@@ -14,7 +19,3 @@ C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp
 C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c#.pdb
 C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c#.genruntimeconfig.cache
 C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\ref\comp_graphics_c#.dll
-C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c_.FormMenu.resources
-C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c_.Paint.resources
-C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c_.FormPictureProcess.resources
-C:\Users\tsibi\OneDrive\Рабочий стол\comp_graph\comp_graphics_c#\comp_graphics_c#\obj\Debug\net6.0-windows\comp_graphics_c_.Properties.Resources.resources

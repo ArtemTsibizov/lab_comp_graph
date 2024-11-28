@@ -30,7 +30,7 @@
         {
             Paint = new Button();
             PictureProcess = new Button();
-            button3 = new Button();
+            button3dGraphics = new Button();
             SuspendLayout();
             // 
             // Paint
@@ -53,21 +53,22 @@
             PictureProcess.UseVisualStyleBackColor = true;
             PictureProcess.Click += PictureProcess_Click;
             // 
-            // button3
+            // button3dGraphics
             // 
-            button3.Location = new Point(712, 215);
-            button3.Name = "button3";
-            button3.Size = new Size(164, 56);
-            button3.TabIndex = 2;
-            button3.Text = "Лабораторная 5";
-            button3.UseVisualStyleBackColor = true;
+            button3dGraphics.Location = new Point(712, 215);
+            button3dGraphics.Name = "button3dGraphics";
+            button3dGraphics.Size = new Size(164, 56);
+            button3dGraphics.TabIndex = 2;
+            button3dGraphics.Text = "Лабораторная 5";
+            button3dGraphics.UseVisualStyleBackColor = true;
+            button3dGraphics.Click += button3dGraphics_Click;
             // 
             // FormMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1082, 553);
-            Controls.Add(button3);
+            Controls.Add(button3dGraphics);
             Controls.Add(PictureProcess);
             Controls.Add(Paint);
             Name = "FormMenu";
@@ -79,6 +80,6 @@
 
         private Button Paint;
         private Button PictureProcess;
-        private Button button3;
+        private Button button3dGraphics;
     }
 }

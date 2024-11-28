@@ -32,5 +32,13 @@ namespace comp_graphics_c_
             FormPictureProcess.ShowDialog();
             this.Show();
         }
+
+        private void button3dGraphics_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form3dGraphics form3DGraphics = new Form3dGraphics();
+            form3DGraphics.ShowDialog();
+            this.Show();
+        }
     }
 }

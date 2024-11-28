@@ -39,7 +39,7 @@ namespace comp_graphics_c_
         private int bezierPoint = 1;
         private bool geom;
 
-        private List<int[]> dynamicBezierPoints = new List<int[]>();
+        private List<float[]> dynamicBezierPoints = new List<float[]>();
         private bool dynamicBezierMode = false;
 
 
@@ -198,7 +198,7 @@ namespace comp_graphics_c_
             }
             else if (dynamicBezierMode == true)
             {
-                dynamicBezierPoints.Add(new int[] { e.X, e.Y });
+                dynamicBezierPoints.Add(new float[] { e.X, e.Y });
                 surface.SetPixel(e.X + 1, e.Y, Color.Gold);
                 surface.SetPixel(e.X, e.Y + 1, Color.Gold);
                 surface.SetPixel(e.X - 1, e.Y, Color.Gold);

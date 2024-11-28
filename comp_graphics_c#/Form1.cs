@@ -261,36 +261,37 @@ namespace comp_graphics_c_
 
         }
         // 20 точек
-        public static void Bezier(Bitmap surface, float parameter_t, List<int[]> points, Color color)
+        public static void Bezier(Bitmap surface, float parameter_t, List<float[]> points, Color color)
         {
 
             // Соединение прямой выбранных точек
-            int xPrev = points.ElementAt(0)[0];
-            int yPrev = points.ElementAt(0)[1];
+            int xPrev1 = (int)points.ElementAt(0)[0];
+            int yPrev1 = (int)points.ElementAt(0)[1];
 
             for (int k = 0; k < points.Count; k++)
             {
-                Debug.WriteLine(xPrev + " " + yPrev);
+                Debug.WriteLine(xPrev1 + " " + yPrev1);
                 Debug.WriteLine(points.ElementAt(k)[0] + " " + points.ElementAt(k)[1]);
 
-                BresenhamLine(surface, xPrev, yPrev, points.ElementAt(k)[0], points.ElementAt(k)[1], Color.White);
-                xPrev = points.ElementAt(k)[0];
-                yPrev = points.ElementAt(k)[1];
+                BresenhamLine(surface, xPrev1, yPrev1, (int)points.ElementAt(k)[0], (int)points.ElementAt(k)[1], Color.White);
+                xPrev1 = (int)points.ElementAt(k)[0];
+                yPrev1 = (int)points.ElementAt(k)[1];
             }
 
-            BresenhamLine(surface, xPrev, yPrev, points.ElementAt(points.Count - 1)[0], points.ElementAt(points.Count - 1)[1], Color.White);
+            BresenhamLine(surface, xPrev1, yPrev1, (int)points.ElementAt(points.Count - 1)[0], (int)points.ElementAt(points.Count - 1)[1], Color.White);
 
 
 
             float i, t;
             float x, y;
 
+            float xPrev;
+            float yPrev;
 
+            List<float[]> curPoints;
 
-            List<int[]> curPoints;
-
-            int xDrawPoints = points.ElementAt(0)[0];
-            int yDrawPoints = points.ElementAt(0)[1];
+            float xDrawPoints = points.ElementAt(0)[0];
+            float yDrawPoints = points.ElementAt(0)[1];
 
             for(t = 0f; t < 1;t += parameter_t)
             {
@@ -299,40 +300,40 @@ namespace comp_graphics_c_
                 for (int amountOfPoints = points.Count - 1; amountOfPoints >= 2; amountOfPoints--)
                 {
                     Debug.WriteLine("AMOUNT OF POINTs = " + amountOfPoints);
-                    List<int[]> newPoints = new List<int[]>();
+                    List<float[]> newPoints = new List<float[]>();
 
-                    xPrev = curPoints.ElementAt(0)[0] + (int)((curPoints.ElementAt(1)[0] - curPoints.ElementAt(0)[0]) * t);
-                    yPrev = curPoints.ElementAt(0)[1] + (int)((curPoints.ElementAt(1)[1] - curPoints.ElementAt(0)[1]) * t); 
-                    newPoints.Add(new int[] { xPrev, yPrev });
-                    int xCur = 0;
-                    int yCur = 0;
+                    xPrev = curPoints.ElementAt(0)[0] + (curPoints.ElementAt(1)[0] - curPoints.ElementAt(0)[0]) * t;
+                    yPrev = curPoints.ElementAt(0)[1] + (curPoints.ElementAt(1)[1] - curPoints.ElementAt(0)[1]) * t; 
+                    newPoints.Add(new float[] { xPrev, yPrev });
+                    float xCur = 0;
+                    float yCur = 0;
 
                     for (int k = 1; k <= amountOfPoints - 1; k++)
                     {
-                        xCur = curPoints.ElementAt(k)[0] + (int)((curPoints.ElementAt(k + 1)[0] - curPoints.ElementAt(k)[0]) * t);
-                        yCur = curPoints.ElementAt(k)[1] + (int)((curPoints.ElementAt(k + 1)[1] - curPoints.ElementAt(k)[1]) * t);
+                        xCur =  curPoints.ElementAt(k)[0] + (curPoints.ElementAt(k + 1)[0] - curPoints.ElementAt(k)[0]) * t;
+                        yCur = curPoints.ElementAt(k)[1] + (curPoints.ElementAt(k + 1)[1] - curPoints.ElementAt(k)[1]) * t;
 
                         //BresenhamLine(surface, xPrev, yPrev, xCur, yCur, Color.Red);
 
                         xPrev = xCur;
                         yPrev = yCur;
-                        newPoints.Add(new int[] { xCur, yCur });
+                        newPoints.Add(new float[] { xCur, yCur });
                     }
                     
                     curPoints = newPoints;
                 }
 
                 // Осталось две точки => получаем последнюю точку
-                xPrev = curPoints.ElementAt(0)[0] + (int)((curPoints.ElementAt(1)[0] - curPoints.ElementAt(0)[0]) * t);
-                yPrev = curPoints.ElementAt(0)[1] + (int)((curPoints.ElementAt(1)[1] - curPoints.ElementAt(0)[1]) * t);
+                xPrev =(int)( curPoints.ElementAt(0)[0] + (curPoints.ElementAt(1)[0] - curPoints.ElementAt(0)[0]) * t);
+                yPrev =(int)( curPoints.ElementAt(0)[1] + (curPoints.ElementAt(1)[1] - curPoints.ElementAt(0)[1]) * t);
 
-                BresenhamLine(surface, xDrawPoints, yDrawPoints, xPrev, yPrev, color);
+                BresenhamLine(surface, (int)xDrawPoints, (int)yDrawPoints, (int)xPrev, (int)yPrev, color);
 
                 xDrawPoints = xPrev;
                 yDrawPoints = yPrev;
 
             }
-            BresenhamLine(surface, xDrawPoints, yDrawPoints, points.ElementAt(points.Count - 1)[0], points.ElementAt(points.Count - 1)[1], color);
+            BresenhamLine(surface,(int) xDrawPoints, (int)yDrawPoints, (int)points.ElementAt(points.Count - 1)[0],(int)points.ElementAt(points.Count - 1)[1], color);
 
 
 
