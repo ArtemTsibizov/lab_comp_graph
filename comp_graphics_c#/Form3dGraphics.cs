@@ -32,8 +32,8 @@ namespace comp_graphics_c_
 
             int R = int.Parse(textBoxR.Text);
             int r = int.Parse(textBox_r.Text);
-            R = 50;
-            r = 10;
+            R = 100;
+            r = 30;
 
 
             int dx = int.Parse(numericUpDownShiftX.Value.ToString());
@@ -44,14 +44,16 @@ namespace comp_graphics_c_
             int y_rotate_angle = int.Parse(numericUpDownAngleY.Value.ToString());
             int z_rotate_angle = int.Parse(numericUpDownAngleZ.Value.ToString());
 
-
+            double kX = 1;
+            double kY = 1;
+            double kZ = 1;
 
             for (double a = 0; a < 2 * Math.PI; a += Math.PI * .1)
             {
                 double x_prev = (int)((R + r * Math.Cos(a)) * (Math.Sin((-1) * (Math.PI))));
                 double y_prev = (int)((R + r * Math.Cos(a)) * (Math.Cos((-1) * (Math.PI))));
                 double z_prev = (int)(r * Math.Sin(a));
-                double[,] coordinates_prev = transformCoordinate(x_prev, y_prev, z_prev, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
+                double[,] coordinates_prev = transformCoordinate(x_prev, y_prev, z_prev, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle, kX, kY, kZ);
                 x_prev = coordinates_prev[0, 0];
                 y_prev = coordinates_prev[1, 0];
 
@@ -62,12 +64,7 @@ namespace comp_graphics_c_
                     double z = (int)(r * Math.Sin(a));
 
 
-
-                    //double[] xy = MultiplyMatrix(new double[] { x, y, z }, 1);
-
-
-
-                    double[,] coordinates = transformCoordinate(x, y, z, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
+                    double[,] coordinates = transformCoordinate(x, y, z, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle, kX, kY, kZ);
 
 
                     x = coordinates[0, 0];
@@ -83,7 +80,7 @@ namespace comp_graphics_c_
                 double x_first = (int)((R + r * Math.Cos(a)) * (Math.Sin((-1) * (Math.PI))));
                 double y_first = (int)((R + r * Math.Cos(a)) * (Math.Cos((-1) * (Math.PI))));
                 double z_first = (int)(r * Math.Sin(a));
-                double[,] coordinates_first = transformCoordinate(x_first, y_first, z_first, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
+                double[,] coordinates_first = transformCoordinate(x_first, y_first, z_first, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle, kX, kY, kZ);
                 x_first = coordinates_first[0, 0];
                 y_first = coordinates_first[1, 0];
 
@@ -97,7 +94,7 @@ namespace comp_graphics_c_
                 double y_prev = (int)((R + r * Math.Cos(0)) * (Math.Cos(b)));
                 double z_prev = (int)(r * Math.Sin(0));
 
-                double[,] coordinates_prev = transformCoordinate(x_prev, y_prev, z_prev, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
+                double[,] coordinates_prev = transformCoordinate(x_prev, y_prev, z_prev, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle, kX, kY, kZ);
                 x_prev = coordinates_prev[0, 0];
                 y_prev = coordinates_prev[1, 0];
 
@@ -108,20 +105,13 @@ namespace comp_graphics_c_
                     double z = (int)(r * Math.Sin(a));
 
 
-                    //double[] xy = MultiplyMatrix(new double[] { x, y, z }, 1);
-
-
-
-
-                    double[,] coordinates = transformCoordinate(x, y, z, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
+                    double[,] coordinates = transformCoordinate(x, y, z, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle, kX, kY, kZ);
 
 
                     x = coordinates[0, 0];
                     y = coordinates[1, 0];
 
 
-
-                    //surface.SetPixel((int)(x) + 600, (int)(y) + 200, Color.Red);
                     Form1.BresenhamLine(surface, (int)x_prev + 600, (int)y_prev + 200, (int)x + 600, (int)y + 200, Color.Red);
                     x_prev = x;
                     y_prev = y;
@@ -131,7 +121,7 @@ namespace comp_graphics_c_
                 double y_first = (int)((R + r * Math.Cos(0)) * (Math.Cos(b)));
                 double z_first = (int)(r * Math.Sin(0));
 
-                double[,] coordinates_first = transformCoordinate(x_first, y_first, z_first, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
+                double[,] coordinates_first = transformCoordinate(x_first, y_first, z_first, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle, kX, kY, kZ);
                 x_first = coordinates_first[0, 0];
                 y_first = coordinates_first[1, 0];
 
@@ -140,7 +130,7 @@ namespace comp_graphics_c_
         }
 
         public double[,] transformCoordinate(double x, double y, double z, int dx, int dy, int dz,
-            int x_rotate_angle, int y_rotate_angle, int z_rotate_angle)
+            int x_rotate_angle, int y_rotate_angle, int z_rotate_angle, double kX, double kY, double kZ)
         {
             double x_radian = x_rotate_angle * Math.PI / 180.0;
             double y_radian = y_rotate_angle * Math.PI / 180.0;
@@ -166,10 +156,10 @@ namespace comp_graphics_c_
             double sina = Math.Sin(x_radian);
             double[,] rotateX = new double[,]
             {
-                        { 1, 0   , 0        ,0  },
-                        { 0, cosa, (-1)*sina,0  },
-                        { 0, sina, cosa     ,0  },
-                        { 0,    0, 0        ,0  }
+                        { 1, 0   , 0        , 0  },
+                        { 0, cosa, (-1)*sina, 0  },
+                        { 0, sina, cosa     , 0  },
+                        { 0,    0, 0        , 1  }
             };
 
             double cosb = Math.Cos(y_radian);
@@ -191,27 +181,25 @@ namespace comp_graphics_c_
                         { 0,     0,         0  , 1 }
             };
 
-
-            // Доделать
             double[,] scaleMatrix = new double[,]
             {
-                {0.8,0,0,0 },
-                {0,1.2,0,0 },
-                {0,0,1.5,0 },
+                {kX,0,0,0 },
+                {0,kY,0,0 },
+                {0,0,kZ,0 },
                 {0,0,0,1 }
             };
-            
 
-            
-            
+
+
+
+            transformationMatrix = MultiplyMatrices(transformationMatrix, shiftMatrix);
             transformationMatrix = MultiplyMatrices(transformationMatrix, rotateX);
             transformationMatrix = MultiplyMatrices(transformationMatrix, rotateY);
             transformationMatrix = MultiplyMatrices(transformationMatrix, rotateZ);
             transformationMatrix = MultiplyMatrices(transformationMatrix, scaleMatrix);
+
             coordinates = MultiplyMatrices(transformationMatrix, coordinates);
-            coordinates[3, 0] = 1;
-            coordinates = MultiplyMatrices(shiftMatrix, coordinates);
-            
+
             return coordinates;
 
         }
@@ -262,7 +250,7 @@ namespace comp_graphics_c_
             res[1] += arbitraryOffse[1];
             return res;*/
         }
-        private void showAxis(int dx, int dy, int dz,
+        /*private void showAxis(int dx, int dy, int dz,
             int x_rotate_angle, int y_rotate_angle, int z_rotate_angle, Bitmap surface)
         {
 
@@ -270,7 +258,7 @@ namespace comp_graphics_c_
             double[,] coordinate_start_x = new double[,] { { 0 }, { 0 }, { 0 }, { 1 } };
             double[,] coordinate_end_x = new double[,] { { 20 }, { 0 }, { 0 }, { 1 } };
 
-            coordinate_start_x = transformCoordinate(0, 0, 0, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
+            coordinate_start_x = transformCoordinate(0, 0, 0, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle, kX, kY, kZ);
             coordinate_end_x = transformCoordinate(40, 0, 0, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
             Form1.BresenhamLine(surface, (int)coordinate_start_x[0, 0] + 300, (int)coordinate_start_x[1, 0] + 100, (int)coordinate_end_x[0, 0] + 300, (int)coordinate_end_x[1, 0] + 100, Color.Red);
             coordinate_start_x = transformCoordinate(0, 0, 0, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
@@ -300,7 +288,7 @@ namespace comp_graphics_c_
             Form1.BresenhamLine(surface, (int)coordinate_start_z[0, 0] + 299, (int)coordinate_start_z[1, 0] + 99, (int)coordinate_end_z[0, 0] + 299, (int)coordinate_end_z[1, 0] + 99, Color.LightGreen);
 
 
-        }
+        }*/
         private void process()
         {
 
@@ -310,8 +298,9 @@ namespace comp_graphics_c_
             int R = int.Parse(textBoxR.Text);
             int r = int.Parse(textBox_r.Text);
 
-            int kX = int.Parse(textBoxScaleFactorX.Text);
-
+            double kX = double.Parse(textBoxScaleX.Text);
+            double kY = double.Parse(textBoxScaleY.Text);
+            double kZ = double.Parse(textBoxScaleZ.Text);
 
 
 
@@ -332,19 +321,21 @@ namespace comp_graphics_c_
             double y_radian = y_rotate_angle * Math.PI / 180.0;
             double z_radian = z_rotate_angle * Math.PI / 180.0;
 
-            showAxis(0, 0, 0, x_rotate_angle, y_rotate_angle, z_rotate_angle, surface);
+            //showAxis(0, 0, 0, x_rotate_angle, y_rotate_angle, z_rotate_angle, surface);
 
+            double step_a = double.Parse(textBoxStepA.Text);
+            double step_b = double.Parse(textBoxStepB.Text);
 
-            for (double a = 0; a < 2 * Math.PI; a += Math.PI * .1)
+            for (double a = 0; a < 2 * Math.PI; a += Math.PI * step_a)
             {
                 double x_prev = (int)((R + r * Math.Cos(a)) * (Math.Sin((-1) * (Math.PI))));
                 double y_prev = (int)((R + r * Math.Cos(a)) * (Math.Cos((-1) * (Math.PI))));
                 double z_prev = (int)(r * Math.Sin(a));
-                double[,] coordinates_prev = transformCoordinate(x_prev, y_prev, z_prev, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
+                double[,] coordinates_prev = transformCoordinate(x_prev, y_prev, z_prev, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle, kX, kY, kZ);
                 x_prev = coordinates_prev[0, 0];
                 y_prev = coordinates_prev[1, 0];
 
-                for (double b = (-1) * (Math.PI); b < Math.PI; b += Math.PI * .1)
+                for (double b = (-1) * (Math.PI); b < Math.PI; b += Math.PI * step_b)
                 {
                     double x = (int)((R + r * Math.Cos(a)) * (Math.Sin(b)));
                     double y = (int)((R + r * Math.Cos(a)) * (Math.Cos(b)));
@@ -352,11 +343,7 @@ namespace comp_graphics_c_
 
 
 
-                    //double[] xy = MultiplyMatrix(new double[] { x, y, z }, 1);
-
-
-
-                    double[,] coordinates = transformCoordinate(x, y, z, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
+                    double[,] coordinates = transformCoordinate(x, y, z, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle, kX, kY, kZ);
 
 
                     x = coordinates[0, 0];
@@ -372,7 +359,7 @@ namespace comp_graphics_c_
                 double x_first = (int)((R + r * Math.Cos(a)) * (Math.Sin((-1) * (Math.PI))));
                 double y_first = (int)((R + r * Math.Cos(a)) * (Math.Cos((-1) * (Math.PI))));
                 double z_first = (int)(r * Math.Sin(a));
-                double[,] coordinates_first = transformCoordinate(x_first, y_first, z_first, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
+                double[,] coordinates_first = transformCoordinate(x_first, y_first, z_first, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle, kX, kY, kZ);
                 x_first = coordinates_first[0, 0];
                 y_first = coordinates_first[1, 0];
 
@@ -380,17 +367,17 @@ namespace comp_graphics_c_
                 Form1.BresenhamLine(surface, (int)x_prev + 600, (int)y_prev + 200, (int)x_first + 600, (int)y_first + 200, Color.Red);
             }
 
-            for (double b = (-1) * (Math.PI); b < Math.PI; b += Math.PI * .1)
+            for (double b = (-1) * (Math.PI); b < Math.PI; b += Math.PI * step_b)
             {
                 double x_prev = (int)((R + r * Math.Cos(0)) * (Math.Sin(b)));
                 double y_prev = (int)((R + r * Math.Cos(0)) * (Math.Cos(b)));
                 double z_prev = (int)(r * Math.Sin(0));
 
-                double[,] coordinates_prev = transformCoordinate(x_prev, y_prev, z_prev, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
+                double[,] coordinates_prev = transformCoordinate(x_prev, y_prev, z_prev, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle, kX, kY, kZ);
                 x_prev = coordinates_prev[0, 0];
                 y_prev = coordinates_prev[1, 0];
 
-                for (double a = 0; a < 2 * Math.PI; a += Math.PI * .1)
+                for (double a = 0; a < 2 * Math.PI; a += Math.PI * step_a)
                 {
                     double x = (int)((R + r * Math.Cos(a)) * (Math.Sin(b)));
                     double y = (int)((R + r * Math.Cos(a)) * (Math.Cos(b)));
@@ -402,7 +389,7 @@ namespace comp_graphics_c_
 
 
 
-                    double[,] coordinates = transformCoordinate(x, y, z, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
+                    double[,] coordinates = transformCoordinate(x, y, z, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle, kX, kY, kZ);
 
 
                     x = coordinates[0, 0];
@@ -420,14 +407,14 @@ namespace comp_graphics_c_
                 double y_first = (int)((R + r * Math.Cos(0)) * (Math.Cos(b)));
                 double z_first = (int)(r * Math.Sin(0));
 
-                double[,] coordinates_first = transformCoordinate(x_first, y_first, z_first, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle);
+                double[,] coordinates_first = transformCoordinate(x_first, y_first, z_first, dx, dy, dz, x_rotate_angle, y_rotate_angle, z_rotate_angle, kX, kY, kZ);
                 x_first = coordinates_first[0, 0];
                 y_first = coordinates_first[1, 0];
 
                 Form1.BresenhamLine(surface, (int)x_prev + 600, (int)y_prev + 200, (int)x_first + 600, (int)y_first + 200, Color.Red);
             }
 
-          
+
 
 
 
@@ -650,7 +637,14 @@ namespace comp_graphics_c_
         {
             process();
         }
-        private void buttonScaleFactorX_Click(object sender, EventArgs e)
+
+
+        private void buttonScale_Click(object sender, EventArgs e)
+        {
+            process();
+        }
+
+        private void buttonStep_Click(object sender, EventArgs e)
         {
             process();
         }

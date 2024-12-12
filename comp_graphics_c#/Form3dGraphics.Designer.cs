@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             pictureBox1 = new PictureBox();
-            textBoxScaleFactorX = new TextBox();
-            textBoxYRotation = new TextBox();
-            textBoxZRotation = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -48,7 +45,18 @@
             numericUpDownShiftX = new NumericUpDown();
             numericUpDownShiftY = new NumericUpDown();
             numericUpDownShiftZ = new NumericUpDown();
-            buttonScaleFactorX = new Button();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
+            textBoxScaleX = new TextBox();
+            textBoxScaleY = new TextBox();
+            textBoxScaleZ = new TextBox();
+            buttonScale = new Button();
+            label12 = new Label();
+            textBoxStepA = new TextBox();
+            label13 = new Label();
+            textBoxStepB = new TextBox();
+            buttonStep = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAngleX).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownAngleY).BeginInit();
@@ -66,34 +74,10 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // textBoxScaleFactorX
-            // 
-            textBoxScaleFactorX.Location = new Point(1194, 558);
-            textBoxScaleFactorX.Name = "textBoxScaleFactorX";
-            textBoxScaleFactorX.Size = new Size(125, 27);
-            textBoxScaleFactorX.TabIndex = 3;
-            textBoxScaleFactorX.Text = "0";
-            // 
-            // textBoxYRotation
-            // 
-            textBoxYRotation.Location = new Point(1194, 591);
-            textBoxYRotation.Name = "textBoxYRotation";
-            textBoxYRotation.Size = new Size(125, 27);
-            textBoxYRotation.TabIndex = 4;
-            textBoxYRotation.Text = "0";
-            // 
-            // textBoxZRotation
-            // 
-            textBoxZRotation.Location = new Point(1194, 624);
-            textBoxZRotation.Name = "textBoxZRotation";
-            textBoxZRotation.Size = new Size(125, 27);
-            textBoxZRotation.TabIndex = 5;
-            textBoxZRotation.Text = "0";
-            // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(251, 588);
+            label1.Location = new Point(219, 572);
             label1.Name = "label1";
             label1.Size = new Size(60, 20);
             label1.TabIndex = 6;
@@ -102,7 +86,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(406, 590);
+            label2.Location = new Point(330, 574);
             label2.Name = "label2";
             label2.Size = new Size(60, 20);
             label2.TabIndex = 7;
@@ -111,7 +95,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(579, 588);
+            label3.Location = new Point(454, 573);
             label3.Name = "label3";
             label3.Size = new Size(60, 20);
             label3.TabIndex = 8;
@@ -153,7 +137,7 @@
             // 
             // numericUpDownAngleX
             // 
-            numericUpDownAngleX.Location = new Point(251, 613);
+            numericUpDownAngleX.Location = new Point(219, 597);
             numericUpDownAngleX.Maximum = new decimal(new int[] { 360, 0, 0, 0 });
             numericUpDownAngleX.Name = "numericUpDownAngleX";
             numericUpDownAngleX.Size = new Size(91, 27);
@@ -162,7 +146,7 @@
             // 
             // numericUpDownAngleY
             // 
-            numericUpDownAngleY.Location = new Point(406, 613);
+            numericUpDownAngleY.Location = new Point(330, 597);
             numericUpDownAngleY.Maximum = new decimal(new int[] { 360, 0, 0, 0 });
             numericUpDownAngleY.Name = "numericUpDownAngleY";
             numericUpDownAngleY.Size = new Size(98, 27);
@@ -171,7 +155,7 @@
             // 
             // numericUpDownAngleZ
             // 
-            numericUpDownAngleZ.Location = new Point(579, 611);
+            numericUpDownAngleZ.Location = new Point(454, 597);
             numericUpDownAngleZ.Maximum = new decimal(new int[] { 360, 0, 0, 0 });
             numericUpDownAngleZ.Name = "numericUpDownAngleZ";
             numericUpDownAngleZ.Size = new Size(94, 27);
@@ -181,7 +165,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(713, 616);
+            label6.Location = new Point(808, 571);
             label6.Name = "label6";
             label6.Size = new Size(35, 20);
             label6.TabIndex = 19;
@@ -190,7 +174,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(838, 616);
+            label7.Location = new Point(933, 571);
             label7.Name = "label7";
             label7.Size = new Size(35, 20);
             label7.TabIndex = 21;
@@ -199,7 +183,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(966, 616);
+            label8.Location = new Point(1061, 571);
             label8.Name = "label8";
             label8.Size = new Size(35, 20);
             label8.TabIndex = 23;
@@ -207,7 +191,7 @@
             // 
             // numericUpDownShiftX
             // 
-            numericUpDownShiftX.Location = new Point(754, 613);
+            numericUpDownShiftX.Location = new Point(849, 568);
             numericUpDownShiftX.Name = "numericUpDownShiftX";
             numericUpDownShiftX.Size = new Size(78, 27);
             numericUpDownShiftX.TabIndex = 24;
@@ -215,7 +199,7 @@
             // 
             // numericUpDownShiftY
             // 
-            numericUpDownShiftY.Location = new Point(879, 614);
+            numericUpDownShiftY.Location = new Point(974, 568);
             numericUpDownShiftY.Name = "numericUpDownShiftY";
             numericUpDownShiftY.Size = new Size(81, 27);
             numericUpDownShiftY.TabIndex = 25;
@@ -223,28 +207,134 @@
             // 
             // numericUpDownShiftZ
             // 
-            numericUpDownShiftZ.Location = new Point(1007, 616);
+            numericUpDownShiftZ.Location = new Point(1102, 568);
             numericUpDownShiftZ.Name = "numericUpDownShiftZ";
             numericUpDownShiftZ.Size = new Size(88, 27);
             numericUpDownShiftZ.TabIndex = 26;
             numericUpDownShiftZ.ValueChanged += numericUpDownShiftZ_ValueChanged;
             // 
-            // buttonScaleFactorX
+            // label9
             // 
-            buttonScaleFactorX.Location = new Point(1081, 557);
-            buttonScaleFactorX.Name = "buttonScaleFactorX";
-            buttonScaleFactorX.Size = new Size(94, 29);
-            buttonScaleFactorX.TabIndex = 27;
-            buttonScaleFactorX.Text = "button1";
-            buttonScaleFactorX.UseVisualStyleBackColor = true;
-            buttonScaleFactorX.Click += buttonScaleFactorX_Click;
+            label9.AutoSize = true;
+            label9.Location = new Point(808, 616);
+            label9.Name = "label9";
+            label9.Size = new Size(35, 20);
+            label9.TabIndex = 27;
+            label9.Text = "kX=";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(934, 616);
+            label10.Name = "label10";
+            label10.Size = new Size(34, 20);
+            label10.TabIndex = 29;
+            label10.Text = "kY=";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(1061, 620);
+            label11.Name = "label11";
+            label11.Size = new Size(35, 20);
+            label11.TabIndex = 31;
+            label11.Text = "kZ=";
+            // 
+            // textBoxScaleX
+            // 
+            textBoxScaleX.Location = new Point(849, 614);
+            textBoxScaleX.Name = "textBoxScaleX";
+            textBoxScaleX.Size = new Size(78, 27);
+            textBoxScaleX.TabIndex = 33;
+            textBoxScaleX.Text = "1";
+            // 
+            // textBoxScaleY
+            // 
+            textBoxScaleY.Location = new Point(974, 614);
+            textBoxScaleY.Name = "textBoxScaleY";
+            textBoxScaleY.Size = new Size(81, 27);
+            textBoxScaleY.TabIndex = 34;
+            textBoxScaleY.Text = "1";
+            // 
+            // textBoxScaleZ
+            // 
+            textBoxScaleZ.Location = new Point(1102, 614);
+            textBoxScaleZ.Name = "textBoxScaleZ";
+            textBoxScaleZ.Size = new Size(88, 27);
+            textBoxScaleZ.TabIndex = 35;
+            textBoxScaleZ.Text = "1";
+            // 
+            // buttonScale
+            // 
+            buttonScale.Location = new Point(1209, 617);
+            buttonScale.Name = "buttonScale";
+            buttonScale.Size = new Size(94, 29);
+            buttonScale.TabIndex = 36;
+            buttonScale.Text = "scale";
+            buttonScale.UseVisualStyleBackColor = true;
+            buttonScale.Click += buttonScale_Click;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(579, 556);
+            label12.Name = "label12";
+            label12.Size = new Size(69, 20);
+            label12.TabIndex = 37;
+            label12.Text = "шаг по a";
+            // 
+            // textBoxStepA
+            // 
+            textBoxStepA.Location = new Point(579, 584);
+            textBoxStepA.Name = "textBoxStepA";
+            textBoxStepA.Size = new Size(72, 27);
+            textBoxStepA.TabIndex = 38;
+            textBoxStepA.Text = "0,1";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(674, 560);
+            label13.Name = "label13";
+            label13.Size = new Size(70, 20);
+            label13.TabIndex = 39;
+            label13.Text = "шаг по b";
+            // 
+            // textBoxStepB
+            // 
+            textBoxStepB.Location = new Point(674, 584);
+            textBoxStepB.Name = "textBoxStepB";
+            textBoxStepB.Size = new Size(70, 27);
+            textBoxStepB.TabIndex = 40;
+            textBoxStepB.Text = "0,1";
+            // 
+            // buttonStep
+            // 
+            buttonStep.Location = new Point(618, 617);
+            buttonStep.Name = "buttonStep";
+            buttonStep.Size = new Size(94, 29);
+            buttonStep.TabIndex = 41;
+            buttonStep.Text = "step";
+            buttonStep.UseVisualStyleBackColor = true;
+            buttonStep.Click += buttonStep_Click;
             // 
             // Form3dGraphics
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1331, 653);
-            Controls.Add(buttonScaleFactorX);
+            Controls.Add(buttonStep);
+            Controls.Add(textBoxStepB);
+            Controls.Add(label13);
+            Controls.Add(textBoxStepA);
+            Controls.Add(label12);
+            Controls.Add(buttonScale);
+            Controls.Add(textBoxScaleZ);
+            Controls.Add(textBoxScaleY);
+            Controls.Add(textBoxScaleX);
+            Controls.Add(label11);
+            Controls.Add(label10);
+            Controls.Add(label9);
             Controls.Add(numericUpDownShiftZ);
             Controls.Add(numericUpDownShiftY);
             Controls.Add(numericUpDownShiftX);
@@ -261,9 +351,6 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBoxZRotation);
-            Controls.Add(textBoxYRotation);
-            Controls.Add(textBoxScaleFactorX);
             Controls.Add(pictureBox1);
             Name = "Form3dGraphics";
             Text = "Form3dGraphics";
@@ -281,9 +368,6 @@
         #endregion
 
         private PictureBox pictureBox1;
-        private TextBox textBoxScaleFactorX;
-        private TextBox textBoxYRotation;
-        private TextBox textBoxZRotation;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -300,6 +384,17 @@
         private NumericUpDown numericUpDownShiftX;
         private NumericUpDown numericUpDownShiftY;
         private NumericUpDown numericUpDownShiftZ;
-        private Button buttonScaleFactorX;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private TextBox textBoxScaleX;
+        private TextBox textBoxScaleY;
+        private TextBox textBoxScaleZ;
+        private Button buttonScale;
+        private Label label12;
+        private TextBox textBoxStepA;
+        private Label label13;
+        private TextBox textBoxStepB;
+        private Button buttonStep;
     }
 }
